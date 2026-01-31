@@ -2,6 +2,8 @@ services:
   - type: web
     name: nse-trader-live
     env: python
+    region: singapore
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: sh setup.sh
+    buildCommand: |
+      pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.port $PORT --server.headless true --server.address 0.0.0.0 --server.enableCORS false --server.enableXsrfProtection false
